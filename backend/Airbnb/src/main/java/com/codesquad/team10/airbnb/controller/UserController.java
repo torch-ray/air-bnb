@@ -1,7 +1,7 @@
 package com.codesquad.team10.airbnb.controller;
 
-import com.codesquad.team10.airbnb.dto.LogInDto;
-import com.codesquad.team10.airbnb.dto.SignInDto;
+import com.codesquad.team10.airbnb.dto.request.LogInDto;
+import com.codesquad.team10.airbnb.dto.request.SignInDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

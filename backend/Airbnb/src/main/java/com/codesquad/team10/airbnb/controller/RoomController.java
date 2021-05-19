@@ -1,6 +1,8 @@
 package com.codesquad.team10.airbnb.controller;
 
-import com.codesquad.team10.airbnb.dto.*;
+import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
+import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
+import com.codesquad.team10.airbnb.dto.response.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

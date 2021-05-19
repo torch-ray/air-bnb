@@ -1,4 +1,4 @@
-package com.codesquad.team10.airbnb.dto;
+package com.codesquad.team10.airbnb.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
