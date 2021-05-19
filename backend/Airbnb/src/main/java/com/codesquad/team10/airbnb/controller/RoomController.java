@@ -1,6 +1,7 @@
 package com.codesquad.team10.airbnb.controller;
 
 import com.codesquad.team10.airbnb.dto.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -44,11 +45,13 @@ public class RoomController {
     }
 
     @PostMapping("/reserve")
+    @ResponseStatus(HttpStatus.CREATED)
     public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
         System.out.println(roomReserveDto.toString());
     }
 
     @PostMapping("/wishlists")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addToWishList(@RequestBody WishListAddDto wishListAddDto){
         System.out.println(wishListAddDto.toString());
     }
