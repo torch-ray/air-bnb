@@ -38,13 +38,18 @@ public class RoomController {
     }
 
     @GetMapping("/{id}/charges")
-    public ChargeDetailDto getChargeDetail(@RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut, @RequestParam Integer guests) {
+    public ChargeDetailDto getChargeDetail(@PathVariable Long id, @RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut, @RequestParam Integer guests) {
         System.out.println(location + " " + checkIn + " " + checkOut + " " + guests);
         return new ChargeDetailDto(1322395, 55948, 25996, 1822468, 18247, 67006);
     }
 
-    @PostMapping("/{id}/reserve")
+    @PostMapping("/reserve")
     public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
         System.out.println(roomReserveDto.toString());
+    }
+
+    @PostMapping("/wishlists")
+    public void addToWishList(@RequestBody WishListRequestDto wishListRequestDto){
+        System.out.println(wishListRequestDto.toString());
     }
 }
