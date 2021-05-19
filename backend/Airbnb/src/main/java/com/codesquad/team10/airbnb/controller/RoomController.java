@@ -1,10 +1,7 @@
 package com.codesquad.team10.airbnb.controller;
 
 import com.codesquad.team10.airbnb.dto.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +41,10 @@ public class RoomController {
     public ChargeDetailDto getChargeDetail(@RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut, @RequestParam Integer guests) {
         System.out.println(location + " " + checkIn + " " + checkOut + " " + guests);
         return new ChargeDetailDto(1322395, 55948, 25996, 1822468, 18247, 67006);
+    }
+
+    @PostMapping("/{id}/reserve")
+    public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
+        System.out.println(roomReserveDto.toString());
     }
 }
