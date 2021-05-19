@@ -49,7 +49,7 @@ public class RoomController {
     }
 
     @PostMapping("/wishlists")
-    public void addToWishList(@RequestBody WishListRequestDto wishListRequestDto){
-        System.out.println(wishListRequestDto.toString());
+    public void addToWishList(@RequestBody WishListAddDto wishListAddDto){
+        System.out.println(wishListAddDto.toString());
     }
 }
