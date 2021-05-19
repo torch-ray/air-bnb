@@ -1,9 +1,6 @@
 package com.codesquad.team10.airbnb.controller;
 
-import com.codesquad.team10.airbnb.dto.ChargeGroupDto;
-import com.codesquad.team10.airbnb.dto.ChargeRangeDto;
-import com.codesquad.team10.airbnb.dto.RoomDto;
-import com.codesquad.team10.airbnb.dto.SearchResultDto;
+import com.codesquad.team10.airbnb.dto.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,5 +38,11 @@ public class RoomController {
         rooms.add(new RoomDto("서울", "B) 3min from Itaewon Stn [ 2 BR ] Rooftop View", "https://www.airbnb.com/rooms/29556662/photos/604588770?federated_search_id=6422bc81-ecb8-4381-a7b0-758e46144cbe&source_impression_id=p3_1621340285_vHikcFrealdXlffU&guests=1&adults=1",
                 "127.23254443432437", "110.23232353534342", "최대 인원 2명 ・ 원룸 ・ 침대 1개 ・ 욕실 2개・ 주방 ・ 무선 인터넷・ 에어컨 ・ 헤어드라이어", 64302, 123030, 4.2, 500));
         return new SearchResultDto(rooms.size(), rooms);
+    }
+
+    @GetMapping("/{id}/charges")
+    public ChargeDetailDto getChargeDetail(@RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut, @RequestParam Integer guests) {
+        System.out.println(location + " " + checkIn + " " + checkOut + " " + guests);
+        return new ChargeDetailDto(1322395, 55948, 25996, 1822468, 18247, 67006);
     }
 }
