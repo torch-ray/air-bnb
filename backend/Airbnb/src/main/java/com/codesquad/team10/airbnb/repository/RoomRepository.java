@@ -34,6 +34,8 @@ public class RoomRepository {
             room.setId(rs.getLong("id"));
             room.setLocation(rs.getString("location"));
             room.setTitle(rs.getString("title"));
+            room.setImage(rs.getString("image"));
+            room.setDescription(rs.getString("description"));
             room.setxPos(rs.getString("x_pos"));
             room.setyPos(rs.getString("y_pos"));
             room.setRatings(rs.getDouble("ratings"));

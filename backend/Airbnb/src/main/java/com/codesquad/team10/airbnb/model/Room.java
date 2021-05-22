@@ -8,6 +8,8 @@ public class Room {
 
     private String location;
     private String title;
+    private String image;
+    private String description;
     private String xPos;
     private String yPos;
     private Double ratings;
@@ -20,10 +22,12 @@ public class Room {
     public Room() {
     }
 
-    public Room(Long id, String location, String title, String xPos, String yPos, Double ratings, Integer reviews, Integer charge, Integer cleaningFee, Integer serviceFee, Integer taxFee) {
+    public Room(Long id, String location, String title, String image, String description, String xPos, String yPos, Double ratings, Integer reviews, Integer charge, Integer cleaningFee, Integer serviceFee, Integer taxFee) {
         this.id = id;
         this.location = location;
         this.title = title;
+        this.image = image;
+        this.description = description;
         this.xPos = xPos;
         this.yPos = yPos;
         this.ratings = ratings;
@@ -56,6 +60,22 @@ public class Room {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getxPos() {
@@ -128,6 +148,8 @@ public class Room {
                 "id=" + id +
                 ", location='" + location + '\'' +
                 ", title='" + title + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
                 ", xPos='" + xPos + '\'' +
                 ", yPos='" + yPos + '\'' +
                 ", ratings=" + ratings +

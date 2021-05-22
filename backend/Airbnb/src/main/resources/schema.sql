@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS `wishlist`;
+DROP TABLE IF EXISTS `reserve`;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `room`;
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
@@ -18,8 +23,6 @@ USE `airbnb`;
 -- -----------------------------------------------------
 -- Table `airbnb`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `airbnb`.`user`;
-
 CREATE TABLE IF NOT EXISTS `airbnb`.`user`
 (
     `id`       VARCHAR(45) NOT NULL,
@@ -34,21 +37,21 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`user`
 -- -----------------------------------------------------
 -- Table `airbnb`.`room`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `airbnb`.`room`;
-
 CREATE TABLE IF NOT EXISTS `airbnb`.`room`
 (
-    `id`           INT         NOT NULL,
-    `location`     VARCHAR(45) NOT NULL,
-    `title`        VARCHAR(45) NOT NULL,
-    `x_pos`        VARCHAR(45) NOT NULL,
-    `y_pos`        VARCHAR(45) NOT NULL,
-    `ratings`      DOUBLE      NULL,
-    `reviews`      INT         NULL,
-    `charge`       INT         NOT NULL,
-    `cleaning_fee` INT         NULL,
-    `service_fee`  INT         NULL,
-    `tax_fee`      INT         NULL,
+    `id`           INT          NOT NULL,
+    `location`     VARCHAR(45)  NOT NULL,
+    `title`        VARCHAR(45)  NOT NULL,
+    `image`        VARCHAR(500) NULL,
+    `description`  VARCHAR(100) NULL,
+    `x_pos`        VARCHAR(45)  NOT NULL,
+    `y_pos`        VARCHAR(45)  NOT NULL,
+    `ratings`      DOUBLE       NULL,
+    `reviews`      INT          NULL,
+    `charge`       INT          NOT NULL,
+    `cleaning_fee` INT          NULL,
+    `service_fee`  INT          NULL,
+    `tax_fee`      INT          NULL,
     PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB;
@@ -57,8 +60,6 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`room`
 -- -----------------------------------------------------
 -- Table `airbnb`.`wishlist`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `airbnb`.`wishlist`;
-
 CREATE TABLE IF NOT EXISTS `airbnb`.`wishlist`
 (
     `user_id` VARCHAR(45) NOT NULL,
@@ -82,8 +83,6 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`wishlist`
 -- -----------------------------------------------------
 -- Table `airbnb`.`reserve`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `airbnb`.`reserve`;
-
 CREATE TABLE IF NOT EXISTS `airbnb`.`reserve`
 (
     `user_id`   VARCHAR(45) NOT NULL,
