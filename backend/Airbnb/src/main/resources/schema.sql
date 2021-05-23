@@ -26,7 +26,7 @@ USE `airbnb`;
 CREATE TABLE IF NOT EXISTS `airbnb`.`user`
 (
     `id`       VARCHAR(45) NOT NULL,
-    `password` VARCHAR(45) NULL,
+    `password` VARCHAR(45) NOT NULL,
     `nickname` VARCHAR(45) NULL,
     `email`    VARCHAR(45) NULL,
     PRIMARY KEY (`id`)
