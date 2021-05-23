@@ -23,6 +23,8 @@ USE `airbnb`;
 -- -----------------------------------------------------
 -- Table `airbnb`.`user`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `airbnb`.`user`;
+
 CREATE TABLE IF NOT EXISTS `airbnb`.`user`
 (
     `id`       VARCHAR(45) NOT NULL,
@@ -37,21 +39,23 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`user`
 -- -----------------------------------------------------
 -- Table `airbnb`.`room`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `airbnb`.`room`;
+
 CREATE TABLE IF NOT EXISTS `airbnb`.`room`
 (
-    `id`           INT          NOT NULL,
-    `location`     VARCHAR(45)  NOT NULL,
-    `title`        VARCHAR(45)  NOT NULL,
-    `image`        VARCHAR(500) NULL,
-    `description`  VARCHAR(100) NULL,
-    `x_pos`        VARCHAR(45)  NOT NULL,
-    `y_pos`        VARCHAR(45)  NOT NULL,
-    `ratings`      DOUBLE       NULL,
-    `reviews`      INT          NULL,
-    `charge`       INT          NOT NULL,
-    `cleaning_fee` INT          NULL,
-    `service_fee`  INT          NULL,
-    `tax_fee`      INT          NULL,
+    `id`           INT           NOT NULL,
+    `location`     VARCHAR(45)   NOT NULL,
+    `title`        VARCHAR(100)  NOT NULL,
+    `image`        VARCHAR(500)  NULL,
+    `description`  VARCHAR(1000) NULL,
+    `x_pos`        VARCHAR(45)   NOT NULL,
+    `y_pos`        VARCHAR(45)   NOT NULL,
+    `ratings`      DOUBLE        NULL,
+    `reviews`      INT           NULL,
+    `charge`       INT           NOT NULL,
+    `cleaning_fee` INT           NULL,
+    `service_fee`  INT           NULL,
+    `tax_fee`      INT           NULL,
     PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB;
@@ -60,12 +64,16 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`room`
 -- -----------------------------------------------------
 -- Table `airbnb`.`wishlist`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `airbnb`.`wishlist`;
+
 CREATE TABLE IF NOT EXISTS `airbnb`.`wishlist`
 (
+    `id`      INT         NOT NULL,
     `user_id` VARCHAR(45) NOT NULL,
     `room_id` INT         NOT NULL,
     INDEX `fk_wishlist_user_idx` (`user_id` ASC) VISIBLE,
     INDEX `fk_wishlist_room1_idx` (`room_id` ASC) VISIBLE,
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_wishlist_user`
         FOREIGN KEY (`user_id`)
             REFERENCES `airbnb`.`user` (`id`)
@@ -83,8 +91,11 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`wishlist`
 -- -----------------------------------------------------
 -- Table `airbnb`.`reserve`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `airbnb`.`reserve`;
+
 CREATE TABLE IF NOT EXISTS `airbnb`.`reserve`
 (
+    `id`        INT         NOT NULL,
     `user_id`   VARCHAR(45) NOT NULL,
     `room_id`   INT         NOT NULL,
     `check_in`  VARCHAR(45) NULL,
@@ -92,6 +103,7 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`reserve`
     `guests`    INT         NULL,
     INDEX `fk_table1_user1_idx` (`user_id` ASC) VISIBLE,
     INDEX `fk_table1_room1_idx` (`room_id` ASC) VISIBLE,
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_table1_user1`
         FOREIGN KEY (`user_id`)
             REFERENCES `airbnb`.`user` (`id`)
