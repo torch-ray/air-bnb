@@ -3,6 +3,8 @@ package com.codesquad.team10.airbnb.controller;
 import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
 import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
 import com.codesquad.team10.airbnb.dto.response.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/rooms")
 public class RoomController {
+    private final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
     @GetMapping("/charges")
     public ChargeRangeDto getChargeRange(@RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut) {
@@ -28,7 +31,7 @@ public class RoomController {
     @GetMapping
     public SearchResultDto getSearchResult(@RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut,
                                            @RequestParam Integer min, @RequestParam Integer max, @RequestParam Integer guests) {
-        System.out.println(location + " " + checkIn + " " + checkOut + " " + min + " " + max + " " + guests);
+        logger.debug(location + " " + checkIn + " " + checkOut + " " + min + " " + max + " " + guests);
 
         List<RoomDto> rooms = new ArrayList<>();
         rooms.add(new RoomDto("서울", "Spacious and Comfortable cozy house #4", "https://www.airbnb.com/rooms/29556662/photos/604588770?federated_search_id=6422bc81-ecb8-4381-a7b0-758e46144cbe&source_impression_id=p3_1621340285_vHikcFrealdXlffU&guests=1&adults=1",
@@ -42,19 +45,19 @@ public class RoomController {
 
     @GetMapping("/{id}/charges")
     public ChargeDetailDto getChargeDetail(@PathVariable Long id, @RequestParam String location, @RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut, @RequestParam Integer guests) {
-        System.out.println(location + " " + checkIn + " " + checkOut + " " + guests);
+        logger.debug(location + " " + checkIn + " " + checkOut + " " + guests);
         return new ChargeDetailDto(1322395, 55948, 25996, 1822468, 18247, 67006);
     }
 
     @PostMapping("/reserve")
     @ResponseStatus(HttpStatus.CREATED)
     public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
-        System.out.println(roomReserveDto.toString());
+        logger.debug(roomReserveDto.toString());
     }
 
     @PostMapping("/wishlists")
     @ResponseStatus(HttpStatus.CREATED)
     public void addToWishList(@RequestBody WishListAddDto wishListAddDto){
-        System.out.println(wishListAddDto.toString());
+        logger.debug(wishListAddDto.toString());
     }
 }

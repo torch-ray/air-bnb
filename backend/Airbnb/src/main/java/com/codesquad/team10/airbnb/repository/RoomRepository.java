@@ -1,6 +1,8 @@
 package com.codesquad.team10.airbnb.repository;
 
 import com.codesquad.team10.airbnb.model.Room;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @Repository
 public class RoomRepository {
+    private final Logger logger = LoggerFactory.getLogger(RoomRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -24,7 +27,7 @@ public class RoomRepository {
 
     public Optional<Room> findById(Long id) {
         List<Room> result = jdbcTemplate.query("SELECT * FROM room WHERE id = ?", roomRowMapper(), id);
-        System.out.println("result : " + result);
+        logger.debug("Found room by id : {}", result);
         return result.stream().findAny();
     }
 
