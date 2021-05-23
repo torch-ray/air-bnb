@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class RoomRepository {
+public class RoomRepository implements JdbcRepository<Room> {
     private final Logger logger = LoggerFactory.getLogger(RoomRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -25,10 +25,41 @@ public class RoomRepository {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    @Override
     public Optional<Room> findById(Long id) {
         List<Room> result = jdbcTemplate.query("SELECT * FROM room WHERE id = ?", roomRowMapper(), id);
         logger.debug("Found room by id : {}", result);
         return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Room> findById(String id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Room> findAll() {
+        return null;
+    }
+
+    @Override
+    public void add(Room room) {
+
+    }
+
+    @Override
+    public void update(Room room) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
     }
 
     private RowMapper<Room> roomRowMapper() {

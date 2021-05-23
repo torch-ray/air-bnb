@@ -10,13 +10,11 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements JdbcRepository<User>{
     private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -27,10 +25,41 @@ public class UserRepository {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    @Override
     public Optional<User> findById(String id) {
         List<User> result = jdbcTemplate.query("SELECT * FROM user WHERE id = ?", userRowMapper(), id);
         logger.debug("Found user by id : {}", result);
         return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
+    }
+
+    @Override
+    public void add(User user) {
+
+    }
+
+    @Override
+    public void update(User user) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
     }
 
     private RowMapper<User> userRowMapper() {

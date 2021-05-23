@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class WishListRepository {
+public class WishListRepository implements JdbcRepository<WishList> {
     private final Logger logger = LoggerFactory.getLogger(WishListRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -23,10 +23,41 @@ public class WishListRepository {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    @Override
     public Optional<WishList> findById(Long id) {
         List<WishList> result = jdbcTemplate.query("SELECT * FROM wishlist WHERE id = ?", wishListRowMapper(), id);
         logger.debug("Found wishlist by id : {}", result);
         return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<WishList> findById(String id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<WishList> findAll() {
+        return null;
+    }
+
+    @Override
+    public void add(WishList wishList) {
+
+    }
+
+    @Override
+    public void update(WishList wishList) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
     }
 
     private RowMapper<WishList> wishListRowMapper() {
