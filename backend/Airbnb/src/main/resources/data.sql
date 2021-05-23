@@ -40,3 +40,12 @@ INSERT INTO `airbnb`.`wishlist` (`id`, `user_id`, `room_id`)
 VALUES ('3', 'luke', '3');
 INSERT INTO `airbnb`.`wishlist` (`id`, `user_id`, `room_id`)
 VALUES ('4', 'team10', '4');
+
+INSERT INTO `airbnb`.`reserve` (`id`, `user_id`, `room_id`, `check_in`, `check_out`, `guests`)
+VALUES ('1', 'august', '1', '2021-05-10', '2021-05-18', '3');
+INSERT INTO `airbnb`.`reserve` (`id`, `user_id`, `room_id`, `check_in`, `check_out`, `guests`)
+VALUES ('2', 'ray', '2', '2021-04-10', '2021-04-17', '2');
+INSERT INTO `airbnb`.`reserve` (`id`, `user_id`, `room_id`, `check_in`, `check_out`, `guests`)
+VALUES ('3', 'luke', '3', '2021-06-20', '2021-06-27', '4');
+INSERT INTO `airbnb`.`reserve` (`id`, `user_id`, `room_id`, `check_in`, `check_out`, `guests`)
+VALUES ('4', 'team10', '4', '2021-11-11', '2021-11-20', '5');
