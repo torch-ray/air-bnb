@@ -26,4 +26,16 @@ class ReserveRepositoryTest {
         logger.info("Found reserve by id : {}", reserve);
         assertThat(1L).isEqualTo(reserve.getId());
     }
+
+    @Test
+    void test_add() {
+        Reserve reserve = new Reserve(5L, "august", 1L, "2021-08-10", "2021-08-17", 6);
+        reserveRepository.add(reserve);
+
+        Reserve insertedReserve = reserveRepository
+                .findById(5L)
+                .orElseThrow(IllegalArgumentException::new);
+        logger.info("Inserted reserve : {}", insertedReserve);
+        assertThat("august").isEqualTo(insertedReserve.getUserId());
+    }
 }

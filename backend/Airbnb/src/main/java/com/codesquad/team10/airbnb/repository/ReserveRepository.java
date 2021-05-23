@@ -5,11 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -42,7 +46,18 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
 
     @Override
     public void add(Reserve reserve) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcInsert.withTableName("reserve").usingGeneratedKeyColumns("id");
 
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("user_id", reserve.getUserId());
+        parameters.put("room_id", reserve.getRoomId());
+        parameters.put("check_in", reserve.getCheckIn());
+        parameters.put("check_out", reserve.getCheckOut());
+        parameters.put("guests", reserve.getGuests());
+
+        Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+        reserve.setId(key.longValue());
     }
 
     @Override

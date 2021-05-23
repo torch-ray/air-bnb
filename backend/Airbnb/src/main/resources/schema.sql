@@ -68,7 +68,7 @@ DROP TABLE IF EXISTS `airbnb`.`wishlist`;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`wishlist`
 (
-    `id`      INT         NOT NULL,
+    `id`      INT         NOT NULL AUTO_INCREMENT,
     `user_id` VARCHAR(45) NOT NULL,
     `room_id` INT         NOT NULL,
     INDEX `fk_wishlist_user_idx` (`user_id` ASC) VISIBLE,
@@ -95,7 +95,7 @@ DROP TABLE IF EXISTS `airbnb`.`reserve`;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`reserve`
 (
-    `id`        INT         NOT NULL,
+    `id`        INT         NOT NULL AUTO_INCREMENT,
     `user_id`   VARCHAR(45) NOT NULL,
     `room_id`   INT         NOT NULL,
     `check_in`  VARCHAR(45) NULL,
