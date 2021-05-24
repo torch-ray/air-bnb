@@ -42,7 +42,7 @@ public class UserRepository implements JdbcRepository<User> {
 
     @Override
     public List<User> findAll() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM user", userRowMapper());
     }
 
     @Override

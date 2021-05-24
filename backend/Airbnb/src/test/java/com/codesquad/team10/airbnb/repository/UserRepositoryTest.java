@@ -1,5 +1,6 @@
 package com.codesquad.team10.airbnb.repository;
 
+import com.codesquad.team10.airbnb.model.Reserve;
 import com.codesquad.team10.airbnb.model.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -7,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,6 +28,15 @@ class UserRepositoryTest {
                 .orElseThrow(IllegalArgumentException::new);
         logger.info("Found user by id : {}", user);
         assertThat("august").isEqualTo(user.getId());
+    }
+
+    @Test
+    void test_findAll() {
+        List<User> users = userRepository.findAll();
+        assertThat("august").isEqualTo(users.get(0).getId());
+        assertThat("luke").isEqualTo(users.get(1).getId());
+        assertThat("ray").isEqualTo(users.get(2).getId());
+        assertThat("team10").isEqualTo(users.get(3).getId());
     }
 
     @Test

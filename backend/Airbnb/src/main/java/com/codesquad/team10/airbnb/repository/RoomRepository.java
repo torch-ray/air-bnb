@@ -43,7 +43,7 @@ public class RoomRepository implements JdbcRepository<Room> {
 
     @Override
     public List<Room> findAll() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM room", roomRowMapper());
     }
 
     @Override

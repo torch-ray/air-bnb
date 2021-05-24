@@ -1,5 +1,6 @@
 package com.codesquad.team10.airbnb.repository;
 
+import com.codesquad.team10.airbnb.model.Reserve;
 import com.codesquad.team10.airbnb.model.WishList;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -7,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,6 +28,16 @@ class WishListRepositoryTest {
                 .orElseThrow(IllegalArgumentException::new);
         logger.info("Found wishlist by id : {}", wishList);
         assertThat(1L).isEqualTo(wishList.getId());
+    }
+
+    @Test
+    void test_findAll() {
+        List<WishList> wishLists = wishListRepository.findAll();
+        for (int i = 0; i < wishLists.size(); i++) {
+            WishList wishList = wishLists.get(i);
+            logger.info("Found wishList : {}", wishList);
+            assertThat((long) (i + 1)).isEqualTo(wishList.getId());
+        }
     }
 
     @Test

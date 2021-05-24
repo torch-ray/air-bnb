@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -25,6 +27,16 @@ class RoomRepositoryTest {
                 .orElseThrow(IllegalArgumentException::new);
         logger.info("Found room by id : {}", room);
         assertThat(1L).isEqualTo(room.getId());
+    }
+
+    @Test
+    void test_findAll() {
+        List<Room> rooms = roomRepository.findAll();
+        for (int i = 0; i < rooms.size(); i++) {
+            Room room = rooms.get(i);
+            logger.info("Found room : {}", room);
+            assertThat((long) (i + 1)).isEqualTo(room.getId());
+        }
     }
 
     @Test

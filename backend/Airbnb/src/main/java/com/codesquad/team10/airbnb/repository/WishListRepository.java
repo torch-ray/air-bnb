@@ -41,7 +41,7 @@ public class WishListRepository implements JdbcRepository<WishList> {
 
     @Override
     public List<WishList> findAll() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM wishlist", wishListRowMapper());
     }
 
     @Override

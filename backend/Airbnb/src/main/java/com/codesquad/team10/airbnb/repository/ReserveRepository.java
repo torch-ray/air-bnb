@@ -41,7 +41,7 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
 
     @Override
     public List<Reserve> findAll() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM reserve", reserveRowMapper());
     }
 
     @Override
