@@ -62,7 +62,8 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
 
     @Override
     public void update(Reserve reserve) {
-
+        jdbcTemplate.update("UPDATE reserve SET user_id = ?, room_id = ?, check_in = ?, check_out = ?, guests = ? WHERE id = ?",
+                reserve.getUserId(), reserve.getRoomId(), reserve.getCheckIn(), reserve.getCheckOut(), reserve.getGuests(), reserve.getId());
     }
 
     @Override

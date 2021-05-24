@@ -71,7 +71,8 @@ public class RoomRepository implements JdbcRepository<Room> {
 
     @Override
     public void update(Room room) {
-
+        jdbcTemplate.update("UPDATE room SET location = ?, title = ?, image = ?, description = ?, x_pos = ?, y_pos = ?, ratings = ?, reviews = ?, charge = ?, cleaning_fee = ?, service_fee = ?, tax_fee = ? WHERE id = ?",
+                room.getLocation(), room.getTitle(), room.getImage(), room.getDescription(), room.getxPos(), room.getyPos(), room.getRatings(), room.getReviews(), room.getCharge(), room.getCleaningFee(), room.getServiceFee(), room.getTaxFee(), room.getId());
     }
 
     @Override

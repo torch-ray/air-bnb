@@ -59,7 +59,8 @@ public class WishListRepository implements JdbcRepository<WishList> {
 
     @Override
     public void update(WishList wishList) {
-
+        jdbcTemplate.update("UPDATE wishlist SET user_id = ?, room_id = ? WHERE id = ?",
+                wishList.getUserId(), wishList.getRoomId(), wishList.getId());
     }
 
     @Override

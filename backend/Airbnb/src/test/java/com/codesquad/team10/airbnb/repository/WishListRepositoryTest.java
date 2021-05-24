@@ -38,4 +38,16 @@ class WishListRepositoryTest {
         logger.info("Inserted wishlist : {}", insertedWishList);
         assertThat(2L).isEqualTo(insertedWishList.getRoomId());
     }
+
+    @Test
+    void test_update() {
+        WishList wishList = new WishList(1L, "august", 3L);
+        wishListRepository.update(wishList);
+
+        WishList updatedWishList = wishListRepository
+                .findById(1L)
+                .orElseThrow(IllegalArgumentException::new);
+        logger.info("Updated wishList : {}", updatedWishList);
+        assertThat(3L).isEqualTo(updatedWishList.getRoomId());
+    }
 }

@@ -38,4 +38,16 @@ class UserRepositoryTest {
         logger.info("Inserted user : {}", insertedUser);
         assertThat("test").isEqualTo(insertedUser.getId());
     }
+
+    @Test
+    void test_update() {
+        User user = new User("august", "1234", "nickname", "august@codesquad.com");
+        userRepository.update(user);
+
+        User updatedUser = userRepository
+                .findById("august")
+                .orElseThrow(IllegalArgumentException::new);
+        logger.info("Updated user : {}", updatedUser);
+        assertThat("nickname").isEqualTo(updatedUser.getNickname());
+    }
 }

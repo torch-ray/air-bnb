@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class UserRepository implements JdbcRepository<User>{
+public class UserRepository implements JdbcRepository<User> {
     private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -60,7 +60,8 @@ public class UserRepository implements JdbcRepository<User>{
 
     @Override
     public void update(User user) {
-
+        jdbcTemplate.update("UPDATE user SET password = ?, nickname = ?, email = ? WHERE id = ?",
+                user.getPassword(), user.getNickname(), user.getEmail(), user.getId());
     }
 
     @Override
