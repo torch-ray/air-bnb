@@ -1,5 +1,6 @@
 package com.codesquad.team10.airbnb.dto.request;
 
+import com.codesquad.team10.airbnb.model.Reserve;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RoomReserveDto {
@@ -7,7 +8,7 @@ public class RoomReserveDto {
     private String userId;
 
     @JsonProperty
-    private Integer roomId;
+    private Long roomId;
 
     @JsonProperty
     private String checkIn;
@@ -18,12 +19,16 @@ public class RoomReserveDto {
     @JsonProperty
     private Integer guests;
 
-    public RoomReserveDto(String userId, Integer roomId, String checkIn, String checkOut, Integer guests) {
+    public RoomReserveDto(String userId, Long roomId, String checkIn, String checkOut, Integer guests) {
         this.userId = userId;
         this.roomId = roomId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.guests = guests;
+    }
+
+    public Reserve toEntity() {
+        return new Reserve(null, this.userId, this.roomId, this.checkIn, this.checkOut, this.guests);
     }
 
     @Override

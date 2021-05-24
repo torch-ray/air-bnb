@@ -3,6 +3,7 @@ package com.codesquad.team10.airbnb.controller;
 import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
 import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
 import com.codesquad.team10.airbnb.dto.response.*;
+import com.codesquad.team10.airbnb.service.ReserveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,12 @@ import java.util.List;
 @RequestMapping("/rooms")
 public class RoomController {
     private final Logger logger = LoggerFactory.getLogger(RoomController.class);
+
+    private final ReserveService reserveService;
+
+    public RoomController(ReserveService reserveService) {
+        this.reserveService = reserveService;
+    }
 
     @GetMapping("/charges")
     public ChargeRangeDto getChargeRange(@RequestParam("check-in") String checkIn, @RequestParam("check-out") String checkOut) {
@@ -53,6 +60,7 @@ public class RoomController {
     @ResponseStatus(HttpStatus.CREATED)
     public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
         logger.debug(roomReserveDto.toString());
+        reserveService.add(roomReserveDto);
     }
 
     @PostMapping("/wishlists")
