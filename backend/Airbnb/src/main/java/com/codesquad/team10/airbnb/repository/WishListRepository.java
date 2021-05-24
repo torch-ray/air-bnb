@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class WishListRepository implements JdbcRepository<WishList> {
+public class WishListRepository implements JdbcRepository<WishList, Long> {
     private final Logger logger = LoggerFactory.getLogger(WishListRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -32,11 +32,6 @@ public class WishListRepository implements JdbcRepository<WishList> {
         List<WishList> result = jdbcTemplate.query("SELECT * FROM wishlist WHERE id = ?", wishListRowMapper(), id);
         logger.debug("Found wishlist by id : {}", result);
         return result.stream().findAny();
-    }
-
-    @Override
-    public Optional<WishList> findById(String id) {
-        return Optional.empty();
     }
 
     @Override
@@ -66,11 +61,6 @@ public class WishListRepository implements JdbcRepository<WishList> {
     @Override
     public void delete(Long id) {
         jdbcTemplate.update("DELETE FROM wishlist WHERE id = ?", id);
-    }
-
-    @Override
-    public void delete(String id) {
-
     }
 
     private RowMapper<WishList> wishListRowMapper() {

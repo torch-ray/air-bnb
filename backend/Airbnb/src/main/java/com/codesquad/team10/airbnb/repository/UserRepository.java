@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class UserRepository implements JdbcRepository<User> {
+public class UserRepository implements JdbcRepository<User, String> {
     private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -33,11 +33,6 @@ public class UserRepository implements JdbcRepository<User> {
         List<User> result = jdbcTemplate.query("SELECT * FROM user WHERE id = ?", userRowMapper(), id);
         logger.debug("Found user by id : {}", result);
         return result.stream().findAny();
-    }
-
-    @Override
-    public Optional<User> findById(Long id) {
-        return Optional.empty();
     }
 
     @Override
@@ -62,11 +57,6 @@ public class UserRepository implements JdbcRepository<User> {
     public void update(User user) {
         jdbcTemplate.update("UPDATE user SET password = ?, nickname = ?, email = ? WHERE id = ?",
                 user.getPassword(), user.getNickname(), user.getEmail(), user.getId());
-    }
-
-    @Override
-    public void delete(Long id) {
-
     }
 
     @Override

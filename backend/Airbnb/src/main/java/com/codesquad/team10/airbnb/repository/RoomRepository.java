@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class RoomRepository implements JdbcRepository<Room> {
+public class RoomRepository implements JdbcRepository<Room, Long> {
     private final Logger logger = LoggerFactory.getLogger(RoomRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -34,11 +34,6 @@ public class RoomRepository implements JdbcRepository<Room> {
         List<Room> result = jdbcTemplate.query("SELECT * FROM room WHERE id = ?", roomRowMapper(), id);
         logger.debug("Found room by id : {}", result);
         return result.stream().findAny();
-    }
-
-    @Override
-    public Optional<Room> findById(String id) {
-        return Optional.empty();
     }
 
     @Override
@@ -78,11 +73,6 @@ public class RoomRepository implements JdbcRepository<Room> {
     @Override
     public void delete(Long id) {
         jdbcTemplate.update("DELETE FROM room WHERE id = ?", id);
-    }
-
-    @Override
-    public void delete(String id) {
-
     }
 
     private RowMapper<Room> roomRowMapper() {

@@ -3,10 +3,8 @@ package com.codesquad.team10.airbnb.repository;
 import java.util.List;
 import java.util.Optional;
 
-public interface JdbcRepository<T> {
-    Optional<T> findById(Long id);
-
-    Optional<T> findById(String id);
+public interface JdbcRepository<T, ID> {
+    Optional<T> findById(ID id);
 
     List<T> findAll();
 
@@ -14,7 +12,5 @@ public interface JdbcRepository<T> {
 
     void update(T t);
 
-    void delete(Long id);
-
-    void delete(String id);
+    void delete(ID id);
 }

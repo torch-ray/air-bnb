@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class ReserveRepository implements JdbcRepository<Reserve> {
+public class ReserveRepository implements JdbcRepository<Reserve, Long> {
     private final Logger logger = LoggerFactory.getLogger(ReserveRepository.class);
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -32,11 +32,6 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
         List<Reserve> result = jdbcTemplate.query("SELECT * FROM reserve WHERE id = ?", reserveRowMapper(), id);
         logger.debug("Found reserve by id : {}", result);
         return result.stream().findAny();
-    }
-
-    @Override
-    public Optional<Reserve> findById(String id) {
-        return Optional.empty();
     }
 
     @Override
@@ -69,11 +64,6 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
     @Override
     public void delete(Long id) {
         jdbcTemplate.update("DELETE FROM reserve WHERE id = ?", id);
-    }
-
-    @Override
-    public void delete(String id) {
-
     }
 
     private RowMapper<Reserve> reserveRowMapper() {
