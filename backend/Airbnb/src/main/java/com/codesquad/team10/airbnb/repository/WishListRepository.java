@@ -5,11 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -42,7 +46,15 @@ public class WishListRepository implements JdbcRepository<WishList> {
 
     @Override
     public void add(WishList wishList) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcInsert.withTableName("wishlist").usingGeneratedKeyColumns("id");
 
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("user_id", wishList.getUserId());
+        parameters.put("room_id", wishList.getRoomId());
+
+        Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+        wishList.setId(key.longValue());
     }
 
     @Override
