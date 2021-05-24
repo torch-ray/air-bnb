@@ -1,6 +1,5 @@
 package com.codesquad.team10.airbnb.repository;
 
-import com.codesquad.team10.airbnb.model.Reserve;
 import com.codesquad.team10.airbnb.model.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
