@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS `airbnb`.`room`;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`room`
 (
-    `id`           INT           NOT NULL,
+    `id`           INT           NOT NULL AUTO_INCREMENT,
     `location`     VARCHAR(45)   NOT NULL,
     `title`        VARCHAR(100)  NOT NULL,
     `image`        VARCHAR(500)  NULL,

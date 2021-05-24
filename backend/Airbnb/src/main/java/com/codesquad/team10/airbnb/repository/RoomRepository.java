@@ -6,11 +6,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -44,7 +48,25 @@ public class RoomRepository implements JdbcRepository<Room> {
 
     @Override
     public void add(Room room) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcInsert.withTableName("room").usingGeneratedKeyColumns("id");
 
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("location", room.getLocation());
+        parameters.put("title", room.getTitle());
+        parameters.put("image", room.getImage());
+        parameters.put("description", room.getDescription());
+        parameters.put("x_pos", room.getxPos());
+        parameters.put("y_pos", room.getyPos());
+        parameters.put("ratings", room.getRatings());
+        parameters.put("reviews", room.getReviews());
+        parameters.put("charge", room.getCharge());
+        parameters.put("cleaning_fee", room.getCleaningFee());
+        parameters.put("service_fee", room.getServiceFee());
+        parameters.put("tax_fee", room.getTaxFee());
+
+        Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+        room.setId(key.longValue());
     }
 
     @Override

@@ -26,4 +26,17 @@ class RoomRepositoryTest {
         logger.info("Found room by id : {}", room);
         assertThat(1L).isEqualTo(room.getId());
     }
+
+    @Test
+    void test_add() {
+        Room room = new Room(5L, "대구", "조촐한 나의 집", "image_url", "최대 인원 5명 ・ 거실 ・ 욕실 2개 ・ 주방", "35.123143123", "23.65343322",
+                3.5, 214, 58302, 23251, 342212, 28803);
+        roomRepository.add(room);
+
+        Room insertedRoom = roomRepository
+                .findById(5L)
+                .orElseThrow(IllegalArgumentException::new);
+        logger.info("Inserted room : {}", room);
+        assertThat("대구").isEqualTo(insertedRoom.getLocation());
+    }
 }
