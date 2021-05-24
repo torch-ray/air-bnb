@@ -71,7 +71,7 @@ public class UserRepository implements JdbcRepository<User> {
 
     @Override
     public void delete(String id) {
-
+        jdbcTemplate.update("DELETE FROM user WHERE id = ?", id);
     }
 
     private RowMapper<User> userRowMapper() {

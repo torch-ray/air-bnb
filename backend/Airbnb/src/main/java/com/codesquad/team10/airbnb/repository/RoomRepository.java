@@ -77,7 +77,7 @@ public class RoomRepository implements JdbcRepository<Room> {
 
     @Override
     public void delete(Long id) {
-
+        jdbcTemplate.update("DELETE FROM room WHERE id = ?", id);
     }
 
     @Override

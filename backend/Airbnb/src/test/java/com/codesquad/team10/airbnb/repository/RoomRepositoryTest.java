@@ -1,5 +1,6 @@
 package com.codesquad.team10.airbnb.repository;
 
+import com.codesquad.team10.airbnb.model.Reserve;
 import com.codesquad.team10.airbnb.model.Room;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -63,5 +64,19 @@ class RoomRepositoryTest {
                 .orElseThrow(IllegalArgumentException::new);
         logger.info("Updated room : {}", updatedRoom);
         assertThat("대구").isEqualTo(updatedRoom.getLocation());
+    }
+
+    @Test
+    void test_delete() {
+        Room room = new Room(5L, "대구", "조촐한 나의 집", "image_url", "최대 인원 5명 ・ 거실 ・ 욕실 2개 ・ 주방", "35.123143123", "23.65343322",
+                3.5, 214, 58302, 23251, 342212, 28803);
+        roomRepository.add(room);
+
+        List<Room> rooms = roomRepository.findAll();
+        logger.info("Before deleted : {}", rooms);
+        roomRepository.delete(5L);
+        List<Room> deletedRooms = roomRepository.findAll();
+        logger.info("After deleted : {}", deletedRooms);
+        assertThat(rooms.size()).isEqualTo(deletedRooms.size() + 1);
     }
 }

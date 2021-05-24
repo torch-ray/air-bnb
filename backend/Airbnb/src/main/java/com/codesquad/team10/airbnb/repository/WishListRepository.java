@@ -65,7 +65,7 @@ public class WishListRepository implements JdbcRepository<WishList> {
 
     @Override
     public void delete(Long id) {
-
+        jdbcTemplate.update("DELETE FROM wishlist WHERE id = ?", id);
     }
 
     @Override

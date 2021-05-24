@@ -62,4 +62,14 @@ class ReserveRepositoryTest {
         logger.info("Updated reserve : {}", updatedReserve);
         assertThat("2021-05-11").isEqualTo(updatedReserve.getCheckIn());
     }
+
+    @Test
+    void test_delete() {
+        List<Reserve> reserves = reserveRepository.findAll();
+        logger.info("Before deleted : {}", reserves);
+        reserveRepository.delete(1L);
+        List<Reserve> deletedReserves = reserveRepository.findAll();
+        logger.info("After deleted : {}", deletedReserves);
+        assertThat(reserves.size()).isEqualTo(deletedReserves.size() + 1);
+    }
 }

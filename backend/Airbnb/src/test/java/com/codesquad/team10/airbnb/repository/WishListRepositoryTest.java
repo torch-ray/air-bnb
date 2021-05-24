@@ -63,4 +63,14 @@ class WishListRepositoryTest {
         logger.info("Updated wishList : {}", updatedWishList);
         assertThat(3L).isEqualTo(updatedWishList.getRoomId());
     }
+
+    @Test
+    void test_delete() {
+        List<WishList> wishLists = wishListRepository.findAll();
+        logger.info("Before deleted : {}", wishLists);
+        wishListRepository.delete(1L);
+        List<WishList> deletedWishLists = wishListRepository.findAll();
+        logger.info("After deleted : {}", deletedWishLists);
+        assertThat(wishLists.size()).isEqualTo(deletedWishLists.size() + 1);
+    }
 }

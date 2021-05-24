@@ -68,7 +68,7 @@ public class ReserveRepository implements JdbcRepository<Reserve> {
 
     @Override
     public void delete(Long id) {
-
+        jdbcTemplate.update("DELETE FROM reserve WHERE id = ?", id);
     }
 
     @Override

@@ -62,4 +62,17 @@ class UserRepositoryTest {
         logger.info("Updated user : {}", updatedUser);
         assertThat("nickname").isEqualTo(updatedUser.getNickname());
     }
+
+    @Test
+    void test_delete() {
+        User user = new User("test", "1234", "testing", "test@test.com");
+        userRepository.add(user);
+
+        List<User> users = userRepository.findAll();
+        logger.info("Before deleted : {}", users);
+        userRepository.delete("test");
+        List<User> deletedUsers = userRepository.findAll();
+        logger.info("After deleted : {}", deletedUsers);
+        assertThat(users.size()).isEqualTo(deletedUsers.size() + 1);
+    }
 }
