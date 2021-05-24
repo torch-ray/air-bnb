@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -44,7 +47,15 @@ public class UserRepository implements JdbcRepository<User>{
 
     @Override
     public void add(User user) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("user");
 
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", user.getId());
+        parameters.put("password", user.getPassword());
+        parameters.put("nickname", user.getNickname());
+        parameters.put("email", user.getEmail());
+
+        jdbcInsert.execute(parameters);
     }
 
     @Override

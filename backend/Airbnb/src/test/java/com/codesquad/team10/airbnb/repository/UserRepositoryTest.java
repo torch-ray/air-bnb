@@ -26,4 +26,16 @@ class UserRepositoryTest {
         logger.info("Found user by id : {}", user);
         assertThat("august").isEqualTo(user.getId());
     }
+
+    @Test
+    void test_add() {
+        User user = new User("test", "1234", "testing", "test@test.com");
+        userRepository.add(user);
+
+        User insertedUser = userRepository
+                .findById("test")
+                .orElseThrow(IllegalArgumentException::new);
+        logger.info("Inserted user : {}", insertedUser);
+        assertThat("test").isEqualTo(insertedUser.getId());
+    }
 }
