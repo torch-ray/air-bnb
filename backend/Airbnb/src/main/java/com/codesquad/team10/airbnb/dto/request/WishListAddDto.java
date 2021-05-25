@@ -1,28 +1,33 @@
 package com.codesquad.team10.airbnb.dto.request;
 
+import com.codesquad.team10.airbnb.model.WishList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WishListAddDto {
     @JsonProperty
-    private Integer roomId;
+    private String userId;
 
     @JsonProperty
-    private String userId;
+    private Long roomId;
 
     @JsonProperty
     private String accessToken;
 
-    public WishListAddDto(Integer roomId, String userId, String accessToken) {
-        this.roomId = roomId;
+    public WishListAddDto(String userId, Long roomId, String accessToken) {
         this.userId = userId;
+        this.roomId = roomId;
         this.accessToken = accessToken;
+    }
+
+    public WishList toEntity() {
+        return new WishList(null, this.userId, this.roomId);
     }
 
     @Override
     public String toString() {
         return "WishListAddDto{" +
-                "roomId=" + roomId +
-                ", userId='" + userId + '\'' +
+                "userId='" + userId + '\'' +
+                ", roomId=" + roomId +
                 ", accessToken='" + accessToken + '\'' +
                 '}';
     }

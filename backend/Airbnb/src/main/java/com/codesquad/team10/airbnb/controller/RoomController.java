@@ -4,8 +4,10 @@ import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
 import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
 import com.codesquad.team10.airbnb.dto.response.*;
 import com.codesquad.team10.airbnb.service.ReserveService;
+import com.codesquad.team10.airbnb.service.WishListService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +20,12 @@ public class RoomController {
     private final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
     private final ReserveService reserveService;
+    private final WishListService wishListService;
 
-    public RoomController(ReserveService reserveService) {
+    @Autowired
+    public RoomController(ReserveService reserveService, WishListService wishListService) {
         this.reserveService = reserveService;
+        this.wishListService = wishListService;
     }
 
     @GetMapping("/charges")
@@ -67,5 +72,6 @@ public class RoomController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addToWishList(@RequestBody WishListAddDto wishListAddDto){
         logger.debug(wishListAddDto.toString());
+        wishListService.add(wishListAddDto);
     }
 }
