@@ -5,12 +5,14 @@ import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
 import com.codesquad.team10.airbnb.dto.response.*;
 import com.codesquad.team10.airbnb.service.ReserveService;
 import com.codesquad.team10.airbnb.service.WishListService;
+import com.codesquad.team10.airbnb.util.HttpSessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,14 +65,24 @@ public class RoomController {
 
     @PostMapping("/reserve")
     @ResponseStatus(HttpStatus.CREATED)
-    public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto) {
+    public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto, HttpSession session) {
+        if (!HttpSessionUtils.isLoginUser(session)) {
+            logger.debug("User is not logged in.");
+            return;
+        }
+
         logger.debug(roomReserveDto.toString());
         reserveService.add(roomReserveDto);
     }
 
     @PostMapping("/wishlists")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addToWishList(@RequestBody WishListAddDto wishListAddDto){
+    public void addToWishList(@RequestBody WishListAddDto wishListAddDto, HttpSession session){
+        if (!HttpSessionUtils.isLoginUser(session)) {
+            logger.debug("User is not logged in.");
+            return;
+        }
+
         logger.debug(wishListAddDto.toString());
         wishListService.add(wishListAddDto);
     }

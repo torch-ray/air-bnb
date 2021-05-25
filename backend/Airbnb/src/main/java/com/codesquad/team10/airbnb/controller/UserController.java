@@ -4,6 +4,7 @@ import com.codesquad.team10.airbnb.dto.request.LogInDto;
 import com.codesquad.team10.airbnb.dto.request.SignUpDto;
 import com.codesquad.team10.airbnb.model.User;
 import com.codesquad.team10.airbnb.service.UserService;
+import com.codesquad.team10.airbnb.util.HttpSessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,13 @@ public class UserController {
             throw new IllegalArgumentException("Password is not correct!");
         }
 
+        session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, user);
         logger.debug("User {} logged in successfully!", user.getId());
+    }
+
+    @GetMapping("/logout")
+    public void logout(HttpSession session) {
+        session.removeAttribute(HttpSessionUtils.USER_SESSION_KEY);
+        logger.debug("User logged out.");
     }
 }
