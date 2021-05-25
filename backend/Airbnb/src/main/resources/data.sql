@@ -29,8 +29,8 @@ INSERT INTO `airbnb`.`user` (`id`, `password`, `nickname`, `email`)
 VALUES ('august', '1234', 'Augboot', 'august@gmail.com');
 INSERT INTO `airbnb`.`user` (`id`, `password`, `nickname`, `email`)
 VALUES ('luke', '1234', 'Luke', 'luke@gmail.com');
-INSERT INTO `airbnb`.`user` (`id`, `password`, `nickname`)
-VALUES ('ray', '1234', 'Ray');
+INSERT INTO `airbnb`.`user` (`id`, `password`, `nickname`, `email`)
+VALUES ('ray', '1234', 'Ray', 'ray@naver.com');
 
 INSERT INTO `airbnb`.`wishlist` (`id`, `user_id`, `room_id`)
 VALUES ('1', 'august', '1');

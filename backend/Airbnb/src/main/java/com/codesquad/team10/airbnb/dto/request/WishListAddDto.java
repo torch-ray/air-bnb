@@ -10,13 +10,9 @@ public class WishListAddDto {
     @JsonProperty
     private Long roomId;
 
-    @JsonProperty
-    private String accessToken;
-
-    public WishListAddDto(String userId, Long roomId, String accessToken) {
+    public WishListAddDto(String userId, Long roomId) {
         this.userId = userId;
         this.roomId = roomId;
-        this.accessToken = accessToken;
     }
 
     public WishList toEntity() {
@@ -28,7 +24,6 @@ public class WishListAddDto {
         return "WishListAddDto{" +
                 "userId='" + userId + '\'' +
                 ", roomId=" + roomId +
-                ", accessToken='" + accessToken + '\'' +
                 '}';
     }
 }

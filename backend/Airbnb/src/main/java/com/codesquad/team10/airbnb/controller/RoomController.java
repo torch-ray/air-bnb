@@ -1,6 +1,6 @@
 package com.codesquad.team10.airbnb.controller;
 
-import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
+import com.codesquad.team10.airbnb.dto.request.ReserveDto;
 import com.codesquad.team10.airbnb.dto.request.WishListAddDto;
 import com.codesquad.team10.airbnb.dto.response.*;
 import com.codesquad.team10.airbnb.service.ReserveService;
@@ -65,14 +65,14 @@ public class RoomController {
 
     @PostMapping("/reserve")
     @ResponseStatus(HttpStatus.CREATED)
-    public void reserveRoom(@RequestBody RoomReserveDto roomReserveDto, HttpSession session) {
+    public void reserveRoom(@RequestBody ReserveDto reserveDto, HttpSession session) {
         if (!HttpSessionUtils.isLoginUser(session)) {
             logger.debug("User is not logged in.");
             return;
         }
 
-        logger.debug(roomReserveDto.toString());
-        reserveService.add(roomReserveDto);
+        logger.debug(reserveDto.toString());
+        reserveService.add(reserveDto);
     }
 
     @PostMapping("/wishlists")

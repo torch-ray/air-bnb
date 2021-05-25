@@ -3,7 +3,7 @@ package com.codesquad.team10.airbnb.dto.request;
 import com.codesquad.team10.airbnb.model.Reserve;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RoomReserveDto {
+public class ReserveDto {
     @JsonProperty
     private String userId;
 
@@ -19,7 +19,7 @@ public class RoomReserveDto {
     @JsonProperty
     private Integer guests;
 
-    public RoomReserveDto(String userId, Long roomId, String checkIn, String checkOut, Integer guests) {
+    public ReserveDto(String userId, Long roomId, String checkIn, String checkOut, Integer guests) {
         this.userId = userId;
         this.roomId = roomId;
         this.checkIn = checkIn;
@@ -33,7 +33,7 @@ public class RoomReserveDto {
 
     @Override
     public String toString() {
-        return "RoomReserveDto{" +
+        return "ReserveDto{" +
                 "userId='" + userId + '\'' +
                 ", roomId=" + roomId +
                 ", checkIn='" + checkIn + '\'' +

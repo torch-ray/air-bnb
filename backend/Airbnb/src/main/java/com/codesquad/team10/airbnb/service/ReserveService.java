@@ -1,6 +1,6 @@
 package com.codesquad.team10.airbnb.service;
 
-import com.codesquad.team10.airbnb.dto.request.RoomReserveDto;
+import com.codesquad.team10.airbnb.dto.request.ReserveDto;
 import com.codesquad.team10.airbnb.model.Reserve;
 import com.codesquad.team10.airbnb.repository.ReserveRepository;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ public class ReserveService {
         this.reserveRepository = reserveRepository;
     }
 
-    public void add(RoomReserveDto roomReserveDto) {
-        Reserve reserve = roomReserveDto.toEntity();
+    public void add(ReserveDto reserveDto) {
+        Reserve reserve = reserveDto.toEntity();
         reserveRepository.add(reserve);
     }
 }
