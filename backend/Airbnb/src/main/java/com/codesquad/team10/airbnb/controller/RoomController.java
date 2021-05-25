@@ -71,6 +71,8 @@ public class RoomController {
             return;
         }
 
+        reserveDto.setUserId(HttpSessionUtils.getUserFromSession(session).getId());
+
         logger.debug(reserveDto.toString());
         reserveService.add(reserveDto);
     }
@@ -82,6 +84,8 @@ public class RoomController {
             logger.debug("User is not logged in.");
             return;
         }
+
+        wishListAddDto.setUserId(HttpSessionUtils.getUserFromSession(session).getId());
 
         logger.debug(wishListAddDto.toString());
         wishListService.add(wishListAddDto);

@@ -15,6 +15,10 @@ public class WishListAddDto {
         this.roomId = roomId;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public WishList toEntity() {
         return new WishList(null, this.userId, this.roomId);
     }

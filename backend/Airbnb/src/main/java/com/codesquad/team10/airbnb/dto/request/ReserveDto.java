@@ -27,6 +27,10 @@ public class ReserveDto {
         this.guests = guests;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public Reserve toEntity() {
         return new Reserve(null, this.userId, this.roomId, this.checkIn, this.checkOut, this.guests);
     }
