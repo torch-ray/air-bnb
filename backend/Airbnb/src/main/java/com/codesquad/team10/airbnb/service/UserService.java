@@ -17,4 +17,10 @@ public class UserService {
         User user = signUpDto.toEntity();
         userRepository.add(user);
     }
+
+    public User findById(String id) {
+        return userRepository
+                .findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }
