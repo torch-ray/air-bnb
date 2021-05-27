@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`room`
     `cleaning_fee` INT           NULL,
     `service_fee`  INT           NULL,
     `tax_fee`      INT           NULL,
+    `guests`       INT           NOT NULL,
     PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB;

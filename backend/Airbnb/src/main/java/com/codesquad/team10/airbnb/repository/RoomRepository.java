@@ -41,6 +41,22 @@ public class RoomRepository implements JdbcRepository<Room, Long> {
         return jdbcTemplate.query("SELECT * FROM room", roomRowMapper());
     }
 
+    public List<Room> findByFilter(String location) {
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ?", roomRowMapper(), location);
+    }
+
+    public List<Room> findByFilter(String location, String checkIn, String checkOut) {
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?)", roomRowMapper(), location, checkOut, checkIn);
+    }
+
+    public List<Room> findByFilter(String location, String checkIn, String checkOut, Integer min, Integer max) {
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?)", roomRowMapper(), location, checkIn, checkOut, min, max);
+    }
+
+    public List<Room> findByFilter(String location, String checkIn, String checkOut, Integer min, Integer max, Integer guests) {
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?) AND guests >= ?", roomRowMapper(), location, checkIn, checkOut, min, max, guests);
+    }
+
     @Override
     public void add(Room room) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);

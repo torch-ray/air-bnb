@@ -78,4 +78,33 @@ class RoomRepositoryTest {
         logger.info("After deleted : {}", deletedRooms);
         assertThat(rooms.size()).isEqualTo(deletedRooms.size() + 1);
     }
+
+    @Test
+    void test_findByFilter_location() {
+        List<Room> rooms = roomRepository.findByFilter("서울");
+        logger.info("Filtered rooms : {}", rooms);
+        assertThat(rooms.size()).isEqualTo(2);
+    }
+
+    @Test
+    void test_findByFilter_location_checkIn_checkOut() {
+        List<Room> rooms = roomRepository.findByFilter("서울", "2021-04-01", "2021-05-14");
+        logger.info("Filtered rooms : {}", rooms);
+        assertThat(rooms.size()).isEqualTo(2);
+    }
+
+    @Test
+    void test_findByFilter_location_checkIn_checkOut_min_max() {
+        List<Room> rooms = roomRepository.findByFilter("서울", "2021-04-01", "2021-05-14", 60000, 70000);
+        logger.info("Filtered rooms : {}", rooms);
+        assertThat(rooms.size()).isEqualTo(1);
+    }
+
+    @Test
+    void test_findByFilter_location_checkIn_checkOut_min_max_guests() {
+        List<Room> rooms = roomRepository.findByFilter("서울", "2021-03-01", "2021-03-11", 70000, 90000, 4);
+        logger.info("Filtered rooms : {}", rooms);
+        assertThat(rooms.size()).isEqualTo(1);
+    }
+
 }
