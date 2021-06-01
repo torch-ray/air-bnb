@@ -50,11 +50,11 @@ public class RoomRepository implements JdbcRepository<Room, Long> {
     }
 
     public List<Room> findByFilter(String location, String checkIn, String checkOut, Integer min, Integer max) {
-        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?)", roomRowMapper(), location, checkIn, checkOut, min, max);
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?)", roomRowMapper(), location, checkOut, checkIn, min, max);
     }
 
     public List<Room> findByFilter(String location, String checkIn, String checkOut, Integer min, Integer max, Integer guests) {
-        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?) AND guests >= ?", roomRowMapper(), location, checkIn, checkOut, min, max, guests);
+        return jdbcTemplate.query("SELECT * FROM room WHERE location = ? AND id NOT IN (SELECT room_id FROM reserve WHERE check_in < ? AND check_out > ?) AND (charge BETWEEN ? AND ?) AND guests >= ?", roomRowMapper(), location, checkOut, checkIn, min, max, guests);
     }
 
     @Override

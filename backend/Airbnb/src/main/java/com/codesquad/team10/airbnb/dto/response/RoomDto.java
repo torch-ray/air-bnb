@@ -2,6 +2,10 @@ package com.codesquad.team10.airbnb.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 public class RoomDto {
     @JsonProperty
     private String location;
@@ -44,5 +48,13 @@ public class RoomDto {
         this.totalCharge = totalCharge;
         this.ratings = ratings;
         this.reviews = reviews;
+    }
+
+    public void setTotalCharge(String checkIn, String checkOut) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate checkInDate = LocalDate.parse(checkIn, dateTimeFormatter);
+        LocalDate checkOutDate = LocalDate.parse(checkOut, dateTimeFormatter);
+        long days = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+        this.totalCharge = this.charge * (int) days;
     }
 }

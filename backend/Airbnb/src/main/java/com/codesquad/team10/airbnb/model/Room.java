@@ -1,5 +1,6 @@
 package com.codesquad.team10.airbnb.model;
 
+import com.codesquad.team10.airbnb.dto.response.RoomDto;
 import org.springframework.data.annotation.Id;
 
 public class Room {
@@ -140,6 +141,10 @@ public class Room {
 
     public void setTaxFee(Integer taxFee) {
         this.taxFee = taxFee;
+    }
+
+    public static RoomDto createRoomDto(Room room) {
+        return new RoomDto(room.location, room.title, room.image, room.xPos, room.yPos, room.description, room.charge, room.charge, room.ratings, room.reviews);
     }
 
     @Override

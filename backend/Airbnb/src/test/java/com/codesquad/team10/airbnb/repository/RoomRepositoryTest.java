@@ -83,7 +83,7 @@ class RoomRepositoryTest {
     void test_findByFilter_location() {
         List<Room> rooms = roomRepository.findByFilter("서울");
         logger.info("Filtered rooms : {}", rooms);
-        assertThat(rooms.size()).isEqualTo(2);
+        assertThat(rooms.size()).isEqualTo(4);
     }
 
     @Test
