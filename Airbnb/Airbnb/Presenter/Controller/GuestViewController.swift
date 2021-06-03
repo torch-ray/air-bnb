@@ -7,12 +7,17 @@ final class GuestViewController: UIViewController {
     @IBOutlet weak var infantCountLabel: UILabel!
     @IBOutlet weak var kidCountLabel: UILabel!
     @IBOutlet weak var adultCountLabel: UILabel!
+    
     @IBOutlet weak var guestLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipDeleButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet var buttonController: ButtonController!
+    
     private let viewModel = GuestViewModel()
     private let guestManager = GuestManager()
 
@@ -31,7 +36,9 @@ private extension GuestViewController {
     
     private func setupMainView() {
         setupBackButton()
-        setupButtonController()
+        setupCountButtonController()
+        setupNextButton()
+        setupSkipDeleteButton()
     }
     
     private func setupBackButton() {
@@ -41,7 +48,7 @@ private extension GuestViewController {
             }).disposed(by: rx.disposeBag)
     }
     
-    private func setupButtonController() {
+    private func setupCountButtonController() {
         buttonController.setupButton()
         buttonController.bind { [weak self] (type, action) in
             switch action {
@@ -49,6 +56,34 @@ private extension GuestViewController {
             case.decrease: self?.guestManager.decrease(type)
             }
         }
+    }
+    
+    private func setupNextButton() {
+        guestManager.nextPage
+            .subscribe(onNext: { [weak self] touchable in
+                switch touchable {
+                case true:
+                    self?.nextButton.isEnabled = true
+                    self?.nextButton.setTitleColor(UIColor.black, for: .normal)
+                    self?.skipDeleButton.setTitle("지우기", for: .normal)
+                case false:
+                    self?.nextButton.isEnabled = false
+                    self?.nextButton.setTitleColor(UIColor.systemGray2, for: .normal)
+                    self?.skipDeleButton.setTitle("건너뛰기", for: .normal)
+                }
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupSkipDeleteButton() {
+        skipDeleButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                switch self?.guestManager.nextPage.value {
+                case true:
+                    self?.guestManager.removeAll()
+                default:
+                    break
+                }
+            }).disposed(by: rx.disposeBag)
     }
 }
 

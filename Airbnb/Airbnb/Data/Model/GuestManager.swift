@@ -16,6 +16,7 @@ final class GuestManager {
     private let disposeBag = DisposeBag()
     private var guestState: [GuestType: StateProtocol]
     private lazy var guests: [StateProtocol] = [adults, kid, infant]
+    var nextPage = BehaviorRelay(value: false)
     
     init() {
         adults = AdultState()
@@ -31,6 +32,12 @@ final class GuestManager {
     
     func decrease(_ guest:GuestType) {
         guestState[guest]?.decrease()
+    }
+    
+    func removeAll() {
+        for guest in guestState.keys {
+            guestState[guest]?.remove()
+        }
     }
     
     lazy var adultCount:Driver<String> = {
@@ -52,8 +59,13 @@ final class GuestManager {
     }()
     
     lazy var allGuestCount:Driver<String> = {
-        return Observable.combineLatest(adults.countStates(), kid.countStates(), infant.countStates(), resultSelector: { adult, kid, infant in
-            "\(adult + kid + infant)"
+        return Observable.combineLatest(adults.countStates(), kid.countStates(), infant.countStates(), resultSelector: { [weak self] adult, kid, infant in
+            let allCount = adult + kid + infant
+            switch allCount {
+            case 0..<1: self?.nextPage.accept(false)
+            default: self?.nextPage.accept(true)
+            }
+            return "\(allCount)"
         }).asDriver(onErrorJustReturn: "")
     }()
 }

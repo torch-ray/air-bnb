@@ -1052,7 +1052,9 @@
                         <outlet property="infantCountLabel" destination="MFj-rp-Dqe" id="hvu-lP-O8m"/>
                         <outlet property="kidCountLabel" destination="acK-aX-GOu" id="j11-yp-hb8"/>
                         <outlet property="locationLabel" destination="iXn-pD-acc" id="ZJ5-Tg-miH"/>
+                        <outlet property="nextButton" destination="XQV-Oz-WMy" id="P8L-al-HIb"/>
                         <outlet property="priceLabel" destination="V0r-RC-GRA" id="aNb-qd-QGd"/>
+                        <outlet property="skipDeleButton" destination="BLc-rT-QT9" id="Ssa-bi-SKz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdi-VS-H3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

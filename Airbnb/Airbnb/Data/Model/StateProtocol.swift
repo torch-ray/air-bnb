@@ -7,6 +7,7 @@ protocol StateProtocol {
     func countStates() -> Observable<Int>
     func increase()
     func decrease()
+    func remove()
 }
 
 final class AdultState: StateProtocol {
@@ -28,7 +29,10 @@ final class AdultState: StateProtocol {
         countState.onNext(count)
     }
     
-    
+    func remove() {
+        count = 0
+        countState.onNext(count)
+    }
 }
 
 final class KidState: StateProtocol {
@@ -50,7 +54,10 @@ final class KidState: StateProtocol {
         countState.onNext(count)
     }
     
-    
+    func remove() {
+        count = 0
+        countState.onNext(count)
+    }
 }
 
 final class InfantState: StateProtocol {
@@ -68,6 +75,11 @@ final class InfantState: StateProtocol {
     
     func decrease() {
         count -= 1
+        countState.onNext(count)
+    }
+    
+    func remove() {
+        count = 0
         countState.onNext(count)
     }
 }
