@@ -846,6 +846,9 @@
                                                 <state key="normal" image="minus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="decreaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="hiL-hZ-iLT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwX-qf-oaG">
                                                 <rect key="frame" x="346" y="11" width="58" height="54"/>
@@ -853,6 +856,9 @@
                                                 <state key="normal" image="plus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="increaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="uNC-Hs-PwY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -905,6 +911,9 @@
                                                 <state key="normal" image="minus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="decreaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="a1m-XM-zik"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-6Q-sPd">
                                                 <rect key="frame" x="346" y="11" width="58" height="54"/>
@@ -912,6 +921,9 @@
                                                 <state key="normal" image="plus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="increaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="NZz-xg-Fa2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -964,6 +976,9 @@
                                                 <state key="normal" image="minus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="decreaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="mbi-qb-d2A"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky8-Tm-IQv">
                                                 <rect key="frame" x="346" y="11" width="58" height="54"/>
@@ -971,6 +986,9 @@
                                                 <state key="normal" image="plus.circle" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="increaseWithSender:" destination="9hW-JC-kM8" eventType="touchUpInside" id="yvn-JO-YJL"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1026,14 +1044,28 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="adultCountLabel" destination="dUq-Np-XIk" id="0dq-1N-MtY"/>
                         <outlet property="backButton" destination="sfa-Ii-f7o" id="oQN-i5-rlU"/>
+                        <outlet property="buttonController" destination="9hW-JC-kM8" id="5cz-6x-M4L"/>
                         <outlet property="dateLabel" destination="xHn-ft-JzO" id="C1e-Py-lec"/>
                         <outlet property="guestLabel" destination="pxH-hH-YLg" id="9Dd-md-aKW"/>
+                        <outlet property="infantCountLabel" destination="MFj-rp-Dqe" id="hvu-lP-O8m"/>
+                        <outlet property="kidCountLabel" destination="acK-aX-GOu" id="j11-yp-hb8"/>
                         <outlet property="locationLabel" destination="iXn-pD-acc" id="ZJ5-Tg-miH"/>
                         <outlet property="priceLabel" destination="V0r-RC-GRA" id="aNb-qd-QGd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdi-VS-H3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="9hW-JC-kM8" customClass="ButtonController" customModule="Airbnb" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="decreaseButton" destination="Efm-q8-rNj" collectionClass="NSMutableArray" id="OSM-rY-VR5"/>
+                        <outletCollection property="decreaseButton" destination="sPy-EM-t6W" collectionClass="NSMutableArray" id="zjx-MV-VGC"/>
+                        <outletCollection property="decreaseButton" destination="3cy-QN-ccp" collectionClass="NSMutableArray" id="4Nf-uC-lP5"/>
+                        <outletCollection property="increaseButton" destination="OwX-qf-oaG" collectionClass="NSMutableArray" id="dqy-wG-ANM"/>
+                        <outletCollection property="increaseButton" destination="KKx-6Q-sPd" collectionClass="NSMutableArray" id="Tqz-eA-Nya"/>
+                        <outletCollection property="increaseButton" destination="ky8-Tm-IQv" collectionClass="NSMutableArray" id="hPp-Dp-MlI"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="3815.9420289855075" y="87.723214285714278"/>
         </scene>

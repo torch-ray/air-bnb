@@ -20,6 +20,7 @@
 		7171C98B2665F05300E3F872 /* GuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171C98A2665F05300E3F872 /* GuestViewModel.swift */; };
 		7197A4B0265DE3E400729BCF /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A4AF265DE3E400729BCF /* CalendarViewModel.swift */; };
 		7197A4B2265DE5B200729BCF /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A4B1265DE5B200729BCF /* CalendarCell.swift */; };
+		719AEA0526675FD600EF3F6A /* GuestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AEA0426675FD600EF3F6A /* GuestManager.swift */; };
 		71A67D2526539B6A00FC6689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D2426539B6A00FC6689 /* AppDelegate.swift */; };
 		71A67D2726539B6A00FC6689 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D2626539B6A00FC6689 /* SceneDelegate.swift */; };
 		71A67D2926539B6A00FC6689 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D2826539B6A00FC6689 /* MainViewController.swift */; };
@@ -29,6 +30,8 @@
 		71A67D3E2653A92100FC6689 /* FirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D3D2653A92100FC6689 /* FirstSectionCell.swift */; };
 		71A67D422653AA9800FC6689 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D412653AA9800FC6689 /* MainViewInfo.swift */; };
 		71A67D442653AD7400FC6689 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A67D432653AD7400FC6689 /* DataManager.swift */; };
+		71A9222C26688F9200E5B291 /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9222B26688F9200E5B291 /* ButtonController.swift */; };
+		71A9222E2668927700E5B291 /* StateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9222D2668927700E5B291 /* StateProtocol.swift */; };
 		71B5E9F0265F2CA800F58477 /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5E9EF265F2CA800F58477 /* PriceViewController.swift */; };
 		71B5E9F2265F356D00F58477 /* PriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5E9F1265F356D00F58477 /* PriceViewModel.swift */; };
 		71B93A7226576CA10028C492 /* ThirdSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B93A7126576CA10028C492 /* ThirdSectionCell.swift */; };
@@ -63,6 +66,7 @@
 		7171C98A2665F05300E3F872 /* GuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewModel.swift; sourceTree = "<group>"; };
 		7197A4AF265DE3E400729BCF /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		7197A4B1265DE5B200729BCF /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		719AEA0426675FD600EF3F6A /* GuestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestManager.swift; sourceTree = "<group>"; };
 		71A67D2126539B6A00FC6689 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A67D2426539B6A00FC6689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71A67D2626539B6A00FC6689 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		71A67D3D2653A92100FC6689 /* FirstSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionCell.swift; sourceTree = "<group>"; };
 		71A67D412653AA9800FC6689 /* MainViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInfo.swift; sourceTree = "<group>"; };
 		71A67D432653AD7400FC6689 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		71A9222B26688F9200E5B291 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
+		71A9222D2668927700E5B291 /* StateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateProtocol.swift; sourceTree = "<group>"; };
 		71B5E9EF265F2CA800F58477 /* PriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
 		71B5E9F1265F356D00F58477 /* PriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewModel.swift; sourceTree = "<group>"; };
 		71B93A7126576CA10028C492 /* ThirdSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionCell.swift; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				71F65547265CC43E008645B8 /* CalendarViewController.swift */,
 				71B5E9EF265F2CA800F58477 /* PriceViewController.swift */,
 				7149B3DF265F78F10069D818 /* GuestViewController.swift */,
+				71A9222B26688F9200E5B291 /* ButtonController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +239,8 @@
 				71B93A7926578E830028C492 /* LoginInfo.swift */,
 				71D2391B265D0F3D001FA8F6 /* AccommodationInfo.swift */,
 				713D478A265F17C8007DDFFD /* TransformManager.swift */,
+				719AEA0426675FD600EF3F6A /* GuestManager.swift */,
+				71A9222D2668927700E5B291 /* StateProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +406,7 @@
 				71A67D2526539B6A00FC6689 /* AppDelegate.swift in Sources */,
 				71D133E126575AB000A71626 /* SecondSectionCell.swift in Sources */,
 				71DA18362654CACC00415EDD /* SecondSectionView.swift in Sources */,
+				71A9222C26688F9200E5B291 /* ButtonController.swift in Sources */,
 				71F6554E265CDC33008645B8 /* RxDelegateProxy.swift in Sources */,
 				71D2391C265D0F3D001FA8F6 /* AccommodationInfo.swift in Sources */,
 				71B5E9F0265F2CA800F58477 /* PriceViewController.swift in Sources */,
@@ -415,12 +425,14 @@
 				7112E6EA2656054900F9AAD6 /* TravelInfoCell.swift in Sources */,
 				71DA183A2654E2FE00415EDD /* ThirdSectionView.swift in Sources */,
 				7157C8892654AC4000EF7977 /* MainViewModel.swift in Sources */,
+				71A9222E2668927700E5B291 /* StateProtocol.swift in Sources */,
 				71F65544265CB8FD008645B8 /* TravelInfoViewModel.swift in Sources */,
 				71D133DA2657531A00A71626 /* MainCollectionViewDelegate.swift in Sources */,
 				71F65541265C9002008645B8 /* RegieonViewModel.swift in Sources */,
 				71B93A7226576CA10028C492 /* ThirdSectionCell.swift in Sources */,
 				71F65546265CB9D7008645B8 /* CommonViewModelType.swift in Sources */,
 				71B93A74265783410028C492 /* LoginViewContoller.swift in Sources */,
+				719AEA0526675FD600EF3F6A /* GuestManager.swift in Sources */,
 				7197A4B0265DE3E400729BCF /* CalendarViewModel.swift in Sources */,
 				71B93A7826578C5A0028C492 /* APIService.swift in Sources */,
 				7112E6EC26561CDE00F9AAD6 /* HeaderView.swift in Sources */,
