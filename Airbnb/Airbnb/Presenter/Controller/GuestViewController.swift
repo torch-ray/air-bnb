@@ -91,5 +91,9 @@ private extension GuestViewController {
         guestManager.infantCount
             .drive(infantCountLabel.rx.text)
             .disposed(by: rx.disposeBag)
+        
+        guestManager.allGuestCount
+            .drive(guestLabel.rx.text)
+            .disposed(by: rx.disposeBag)
     }
 }

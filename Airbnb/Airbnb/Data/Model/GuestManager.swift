@@ -50,4 +50,10 @@ final class GuestManager {
             .map{String($0)}
             .asDriver(onErrorJustReturn: "")
     }()
+    
+    lazy var allGuestCount:Driver<String> = {
+        return Observable.combineLatest(adults.countStates(), kid.countStates(), infant.countStates(), resultSelector: { adult, kid, infant in
+            "\(adult + kid + infant)"
+        }).asDriver(onErrorJustReturn: "")
+    }()
 }
